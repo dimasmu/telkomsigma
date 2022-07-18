@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soal 1</title>
+</head>
+
+<body>
+    <div id="head">
+
+    </div>
+    <script>
+        var support = (function () {
+            if (!window.DOMParser) return false;
+            var parser = new DOMParser();
+            try {
+                parser.parseFromString('x', 'text/html');
+            } catch (err) {
+                return false;
+            }
+            return true;
+        })();
+
+        var textToHTML = function (str) {
+
+            // check for DOMParser support
+            if (support) {
+                var parser = new DOMParser();
+                var doc = parser.parseFromString(str, 'text/html');
+                return doc.body.innerHTML;
+            }
+
+            // Otherwise, create div and append HTML
+            var dom = document.createElement('div');
+            dom.innerHTML = str;
+            return dom;
+
+        };
+        const search = '&amp;';
+        const replaceWith = '<br>';
+        const result = `<%= data %>`.split(search).join(replaceWith)
+        document.getElementById("head").innerHTML = textToHTML(`Parameter: <%= parameter %> <br> Data:<br>${result}`);
+    </script>
+</body>
+
+</html>
