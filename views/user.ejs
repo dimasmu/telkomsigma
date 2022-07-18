@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View User</title>
+    <link href="/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="px-4 py-5 my-5 text-center">
+        <h1 class="display-5 fw-bold">User Master</h1>
+        <div class="col-lg-6 mx-auto">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">user name</th>
+                        <th scope="col">full name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td><%= data.data.username %> </td>
+                        <td><%= data.data.fullname %> </td>
+                        <tr>
+                            <td colspan="4">
+                                <table class="table mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">No</th>
+                                            <th scope="col">Nama Aplikasi</th>
+                                        </tr>
+                                    </thead>
+                                    <% data.data.aplikasi.forEach(function(dt,index){ %>
+                                        <tr>
+                                            <td><%= index+1 %> </td>
+                                            <td><%= dt.nama_aplikasi %> </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="5">
+                                                <table class="table mb-0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">No</th>
+                                                            <th scope="col">Roles</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <% dt.roles.forEach(function(dt,index){ %>
+                                                        <tr>
+                                                            <td><%= index+1 %> </td>
+                                                            <td><%= dt.nama_role %> </td>
+                                                        </tr>
+                                                    <% });%>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    <% });%>
+                                </table>
+                            </td>
+                        </tr>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
